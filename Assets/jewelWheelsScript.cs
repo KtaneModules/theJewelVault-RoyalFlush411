@@ -1208,6 +1208,7 @@ public class jewelWheelsScript : MonoBehaviour
         }
         else
         {
+            GetComponent<KMSelectable>().AddInteractionPunch(0.5f);
             rotationLock = true;
             if (wheel == assignedWheels[0])
             {
@@ -1372,6 +1373,7 @@ public class jewelWheelsScript : MonoBehaviour
         }
         else
         {
+            GetComponent<KMSelectable>().AddInteractionPunch();
             rotationLock = true;
             Audio.PlaySoundAtTransform("reset", transform);
             GetCorrectJewelStartOrientation();
@@ -1482,6 +1484,7 @@ public class jewelWheelsScript : MonoBehaviour
         }
         else if (jewelOrientation[0] == targetOrientation && jewelOrientation[1] == targetOrientation && jewelOrientation[2] == targetOrientation && jewelOrientation[3] == targetOrientation)
         {
+            GetComponent<KMSelectable>().AddInteractionPunch();
             rotationLock = true;
             yellowLights.SetActive(true);
             whiteLights.SetActive(false);
@@ -1491,6 +1494,7 @@ public class jewelWheelsScript : MonoBehaviour
         }
         else
         {
+            GetComponent<KMSelectable>().AddInteractionPunch();
             rotationLock = true;
             StartCoroutine(strikeCoroutine());
         }
@@ -1658,7 +1662,7 @@ public class jewelWheelsScript : MonoBehaviour
 
 			while (rotationLock)
 				yield return "trycancel your reset command for jewel wheel was cancelled.";
-			
+
 			yield return new KMSelectable[] {resetButton};
 			yield break;
 		}
@@ -1669,7 +1673,7 @@ public class jewelWheelsScript : MonoBehaviour
 
 			while (rotationLock)
 				yield return "trycancel your solve command for jewel wheel was cancelled.";
-			
+
 			yield return new KMSelectable[] { submitButton };
 			yield return null;
 			yield return "solve";
